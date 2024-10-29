@@ -21,7 +21,6 @@ jobs:
           CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
           ZONE_NAME: ${{ secrets.ZONE_NAME }}
         with:
-          args: 
-            apply -f cluster/
-            apply -f java-app/
-            apply -f mysql/
+          args: apply -f cluster/ -f java-app/ -f mysql/
+        
+            
