@@ -67,6 +67,21 @@ spec:
           name: java-app-config
 
 ---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: java-app-service
+#  namespace: pet-clinic-app
+#spec:
+#  selector:
+#    app: java-app
+#  type: NodePort
+#  ports:
+#  - protocol: TCP
+#    port: 8080
+#    targetPort: 8080
+#    nodePort: 32000
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -75,9 +90,8 @@ metadata:
 spec:
   selector:
     app: java-app
-  type: NodePort
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-    nodePort: 32000
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
